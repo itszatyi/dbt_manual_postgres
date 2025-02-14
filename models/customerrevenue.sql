@@ -1,0 +1,12 @@
+SELECT 
+    OS.CUSTOMERID,
+    C.CUSTOMERNAME,
+    SUM(OS.ORDERCOUNT) AS ORDERCOUNT,
+    SUM(OS.REVENUE) AS REVENUE
+FROM 
+    {{ref ('orders_fact') }} OS
+JOIN 
+    {{ref ('customers_stg') }} C on OS.CustomerID = C.CUSTOMERID
+GROUP BY
+    OS.CUSOMERID,
+    C.CUSTOMERNAME

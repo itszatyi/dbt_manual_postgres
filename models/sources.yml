@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name : landing
+    database: postgres
+    schema: collector
+    tables:
+      - name: customers
+        description: Contains customer details with contact details as well.
+        columns:
+          - name: customerid
+            description: Primary key constraint
+            tests:
+              - unique
+              - not_null
+          - name: email
+            description: Contains personal e-mail adress.
+            tests:
+              - unique 
+      - name: dates
+      - name: employees
+      - name: orderitems
+      - name: orders
+      - name: products
+      - name: stores
+        description: Contains retail store details.
+        columns: 
+          - name: storeid
+            description: Contains store ID, primary key.
+            tests:
+              - unique
+              - not_null
+      - name: suppliers
