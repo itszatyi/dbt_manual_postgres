@@ -6,5 +6,4 @@ SELECT
     UNITPRICE,
     QUANTITY * UNITPRICE AS TOTALPRICE,
     Updated_at
-FROM
 FROM {{ source('landing', 'orderitems') }}

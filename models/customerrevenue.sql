@@ -8,5 +8,5 @@ FROM
 JOIN 
     {{ref ('customers_stg') }} C on OS.CustomerID = C.CUSTOMERID
 GROUP BY
-    OS.CUSOMERID,
+    OS.CUSTOMERID,
     C.CUSTOMERNAME

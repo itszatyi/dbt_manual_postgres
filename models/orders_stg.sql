@@ -3,7 +3,7 @@ SELECT
     ORDERDATE,
     CUSTOMERID,
     EMPLOYEEID,
-    STORDEID,
+    STOREID,
     Status AS STATUSCD,
     CASE
         WHEN STATUS = '01' THEN 'In Progress'
