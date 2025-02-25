@@ -6,4 +6,4 @@ SELECT
     UNITPRICE,
     QUANTITY * UNITPRICE AS TOTALPRICE,
     Updated_at
-FROM {{ source('landing', 'orderitems') }}
+FROM "postgres"."collector"."orderitems"

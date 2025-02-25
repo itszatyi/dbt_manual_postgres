@@ -10,9 +10,9 @@ SELECT
     COUNT(DISTINCT O.ORDERID) AS ORDERCOUNT,
     SUM (OI.TOTALPRICE) AS REVENUE
 FROM 
-    {{ref ('orders_stg')}} O
+    "postgres"."processing"."orders_stg" O
 JOIN
-    {{ref ('orderitems_stg') }} OI ON O.ORDERID = OI.ORDERID
+    "postgres"."processing"."orderitems_stg" OI ON O.ORDERID = OI.ORDERID
 GROUP BY
     O.ORDERID,
     O.ORDERDATE,

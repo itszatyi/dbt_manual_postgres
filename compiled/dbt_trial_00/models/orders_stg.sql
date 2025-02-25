@@ -12,4 +12,4 @@ SELECT
         ELSE NULL
     END AS STATUSDESC,
     Updated_at
-FROM {{ source ('landing', 'orders') }}
+FROM "postgres"."collector"."orders"
