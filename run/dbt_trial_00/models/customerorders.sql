@@ -1,0 +1,17 @@
+
+  create view "postgres"."collector"."customerorders__dbt_tmp"
+    
+    
+  as (
+    WITH CUSTOMERORDERS AS (
+	SELECT C.CUSTOMERID, CONCAT(C.FIRSTNAME, ' ', C.LASTNAME) AS CUSTOMERNAME, COUNT(O.ORDERID)
+AS NO_OF_ORDERS
+	FROM  "postgres"."collector"."customers" C
+	JOIN "postgres"."collector"."orders" O ON C.CUSTOMERID = O.CUSTOMERID
+	GROUP BY C.CUSTOMERID, CUSTOMERNAME
+	ORDER BY NO_OF_ORDERS DESC
+)
+
+SELECT CUSTOMERID, CUSTOMERNAME, NO_OF_ORDERS
+FROM CUSTOMERORDERS
+  );
