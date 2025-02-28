@@ -21,6 +21,23 @@ sources:
       - name: employees
       - name: orderitems
       - name: orders
+        description: Holds orderids, date, status with customer and employee ID.
+        columns:
+          - name: orderid
+            description: Primary key for orders.
+            tests:
+              - unique
+              - not_null
+          - name: status
+            description: "{{ doc('orders_status') }}"
+            tests:
+              - accepted_values:
+                  values:
+                    - Shipped
+                    - Pending
+                    - Delivered
+                    - Processing
+                    - Cancelled
         freshness:
           warn_after:
             count: 3
