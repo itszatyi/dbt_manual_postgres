@@ -4,12 +4,14 @@ SELECT
     CUSTOMERID,
     EMPLOYEEID,
     STOREID,
-    Status AS STATUSCD,
+    Status AS STATUS,
     CASE
-        WHEN STATUS = '01' THEN 'In Progress'
-        WHEN STATUS = '02' THEN 'Completed'
-        WHEN STATUS = '03' THEN 'Cancelled'
-        ELSE NULL
-    END AS STATUSDESC,
+	WHEN STATUS = 'Processing' THEN 'Order placed, not yet shipped'                  
+	WHEN STATUS = 'Shipped' THEN 'Order has been shipped, not yet been delivered'
+	WHEN STATUS = 'Delivered' THEN 'Order has been received by customers'
+	WHEN STATUS = 'Pending' THEN 'Customer indicated they want to return this item'
+	WHEN STATUS = 'Returned' THEN 'Item has been returned'
+    ELSE NULL
+END AS STATUSDESC,
     Updated_at
 FROM {{ source ('landing', 'orders') }}

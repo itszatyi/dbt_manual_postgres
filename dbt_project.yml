@@ -31,13 +31,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_trial_00:
+    +tags: "my_first_tag"
     # Config indicated by + and applies to all files under models/example/
-    customers_stg:
-      schema: processing
-    orders_stg:
-      schema: processing
-    orderitems_stg:
-      schema: processing
+    stg:
+      +materialized: view
+      +schema: processing
+      +tags: "staging"
     customerrevenue:
       schema: consumption
       materialized: table
